@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-50 text-neutral-900;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+/* Improved focus visibility for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-secondary;
+}
+
+/* Smooth transitions for interactive elements */
+button, a, input, select {
+  @apply transition-colors;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
+}
+
+/* Plotly chart container fixes */
+.js-plotly-plot .plotly .modebar {
+  top: 4px !important;
+  right: 4px !important;
+}
