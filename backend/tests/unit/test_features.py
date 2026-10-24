@@ -48,3 +48,27 @@ def test_engineer_uses_custom_treatment_outcome_columns():
     assert "purchase_result" not in fs.X.columns
     assert list(fs.T) == [0.0, 10.0, 20.0]
     assert list(fs.Y) == [1.0, 0.0, 1.0]
+def test_engineer_normalizes_custom_column_parameters():
+    """Custom treatment and outcome names should work after normalization."""
+    df = pd.DataFrame({
+        "Discount Given": [0.0, 10.0, 20.0],
+        "Purchase Result": [0, 1, 1],
+        "Loyalty Score": [0.4, 0.8, 0.9],
+    })
+
+    features = engineer(
+        df,
+        treatment_col="Discount Given",
+        outcome_col="Purchase Result",
+    )
+
+    # Treatment and outcome should be extracted correctly.
+    assert features.T.tolist() == [0.0, 10.0, 20.0]
+    assert features.Y.tolist() == [0.0, 1.0, 1.0]
+
+    # Only the actual confounder should remain in X.
+    assert features.X.columns.tolist() == ["loyalty_score"]
+
+    # Neither treatment nor outcome may leak into the feature matrix.
+    assert "discount_given" not in features.X.columns
+    assert "purchase_result" not in features.X.columns
