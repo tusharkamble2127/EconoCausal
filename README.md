@@ -614,10 +614,3 @@ All 218 backend tests and all 25 Playwright E2E tests pass on the canonical envi
 
 ---
 
-## License / Attribution
-
-Internship deliverable for Infotact Solutions. Not licensed for public redistribution.
-
----
-
-> **Note on historical reports:** `AUDIT_REPORT.md` (dated 2026-08-09) and `QA_REPORT.md` (dated 2026-08-12/13) are preserved as historical snapshots. `AUDIT_REPORT.md` records an 181-test result from before the 9 password-reset tests were added (181 → 190). See the headers of those files for their time-bound context; this README is the authoritative, current entry point.
